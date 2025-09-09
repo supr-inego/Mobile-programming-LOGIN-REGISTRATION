@@ -1,79 +1,86 @@
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { FontAwesome } from '@expo/vector-icons'
-import { Link } from 'expo-router'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
+import { FontAwesome } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 
-const index = () => {
+const Index = () => {
   return (
     <View style={styles.container}>
       <View style={styles.LogInHere}>
-        <Text style={styles.LogInHereText}>Log In Here </Text>
+        <Text style={styles.LogInHereText}>Log In Here</Text>
+
+        {/* Email input */}
         <View style={styles.InputContainer}>
           <FontAwesome
-          name="user"
-          size={20}
-          color={"#9A9A9A"}
-          style={styles.emailAddressIcon}
-        />
-        <TextInput
-          style={styles.emailAddress}
-          placeholder= "Enter email address"
-          keyboardType='email-address'
+            name="user"
+            size={20}
+            color={"#9A9A9A"}
+            style={styles.emailAddressIcon}
           />
-        </View>
-         <View style={styles.passwordContainer}>
-          <FontAwesome
-          name="lock"
-          size={20}
-          color={"#9A9A9A"}
-          style={styles.passwordIcon}
-        />
-        <TextInput
-          style={styles.emailAddress}
-          placeholder= "Enter Password"
-          secureTextEntry={true}
+          <TextInput
+            style={styles.emailAddress}
+            placeholder="Enter email address"
+            keyboardType="email-address"
           />
         </View>
 
+        {/* Password input */}
+        <View style={styles.passwordContainer}>
+          <FontAwesome
+            name="lock"
+            size={20}
+            color={"#9A9A9A"}
+            style={styles.passwordIcon}
+          />
+          <TextInput
+            style={styles.emailAddress}
+            placeholder="Enter Password"
+            secureTextEntry={true}
+          />
+        </View>
+
+        {/* Login button */}
         <TouchableOpacity style={styles.loginButton}>
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Sign up link */}
       <View style={styles.signContainer}>
         <Text style={styles.signUpText}>Don't have an account?</Text>
-        <Link href="./registration">
-          <Text>Create</Text>
+        <Link href="/registration">
+          <Text style={styles.signUpLink}>Create</Text>
         </Link>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#3B5B8F",
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    justifyContent: "flex-start",
+    alignItems: "center",
     paddingTop: 100,
   },
   LogInHere: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
     paddingVertical: 150,
   },
   LogInHereText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginVertical: 30,
   },
   InputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderRadius: 250,
     paddingHorizontal: 30,
     height: 50,
@@ -85,15 +92,15 @@ const styles = StyleSheet.create({
   emailAddress: {
     flex: 1,
     fontSize: 16,
-    color: '#000',
+    color: "#000",
   },
   passwordIcon: {
     marginRight: 10,
   },
   passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
     borderRadius: 250,
     paddingHorizontal: 30,
     height: 50,
@@ -101,29 +108,34 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   loginButton: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderRadius: 25,
     paddingVertical: 12,
     paddingHorizontal: 32,
     marginTop: 30,
-    alignItems: 'center',
+    alignItems: "center",
   },
-  loginButtonText:{
-    color: 'red',
-    fontWeight: 'bold',
-
+  loginButtonText: {
+    color: "red",
+    fontWeight: "bold",
   },
   signContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     marginTop: 20,
   },
   signUpText: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
     marginRight: 5,
-  }
-})
+  },
+  signUpLink: {
+    color: "#FFD700",
+    fontSize: 16,
+    fontWeight: "bold",
+    textDecorationLine: "underline",
+  },
+});
 
-export default index
+export default Index;
