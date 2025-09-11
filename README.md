@@ -1,50 +1,57 @@
-# Welcome to your Expo app 👋
+# Mobile-programming-LOGIN-REGISTRATION
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This repository contains an educational project for implementing a basic login and registration system on the Android platform. The project is designed to help learners understand the fundamentals of user authentication and form handling in a mobile environment.
 
-## Get started
+## Features
+- User Registration Screen
+- User Login Screen
+- Basic form validation
+- Educational code structure using Kotlin and JavaScript
 
-1. Install dependencies
+## Technologies Used
+- Kotlin (main Android logic)
+- JavaScript (for potential web or hybrid logic)
+- Android SDK
+- Expo (for cross-platform development)
 
-   ```bash
-   npm install
-   ```
+## Installation
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+### 1. Clone this repository
 ```bash
-npm run reset-project
+git clone https://github.com/supr-inego/Mobile-programming-LOGIN-REGISTRATION.git
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Install dependencies
+If you are using the Expo/JavaScript part of the project:
+```bash
+npm install
+```
+If working with the Android/Kotlin native part, open the project in Android Studio and let it resolve dependencies automatically.
 
-## Learn more
+### 3. Start the app
+For Expo/JavaScript:
+```bash
+npx expo start
+```
+For Android Native (Kotlin):
+- Open in Android Studio
+- Connect an Android device or start an emulator
+- Click **Run** to build and deploy the app
 
-To learn more about developing your project with Expo, look at the following resources:
+## Usage
+1. **Registration:**
+   - Launch the app.
+   - Navigate to the Registration screen.
+   - Enter your details and submit the form to create an account.
+2. **Login:**
+   - Enter your registered credentials on the Login screen.
+   - Submit the form to access the app.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Educational Purpose
+This project is for learning and demonstration only. It is not intended for production use and does not include advanced security features.
 
-## Join the community
+## Contributing
+Contributions for improvements and learning resources are welcome! Feel free to open issues or submit pull requests.
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## License
+This project is licensed for educational and personal use.
