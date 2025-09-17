@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 export default function NotificationScreen() {
   return (
     <View style={styles.container}>
-      {/* Notification Card */}
       <View style={styles.card}>
         <Text style={styles.title}>Math Assignment</Text>
         <Text style={styles.subtitle}>Due tomorrow 11:59pm</Text>

@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
-
+import { Pressable } from "react-native";
 
 export default function RootLayout() {
   return (
@@ -8,9 +8,19 @@ export default function RootLayout() {
       screenOptions={{
         tabBarActiveTintColor: "black",
         tabBarInactiveTintColor: "grey",
-    }}
+        headerStyle: {
+          backgroundColor: "#4A90E2",
+        },
+        headerTintColor: "#fff", // header text color
+        headerTitleStyle: {
+          fontWeight: "bold",
+        },
+        // Remove the ripple effect
+        tabBarButton: (props) => (
+          <Pressable {...props} android_ripple={null} />
+        ),
+      }}
     >
-
       <Tabs.Screen
         name="home"
         options={{
@@ -20,25 +30,25 @@ export default function RootLayout() {
           ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="notification"
         options={{
-          title: "notification",
+          title: "Notification",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="notifications-outline" size={size} color={color} />
           ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="calendar"
         options={{
-          title: "calendar",
+          title: "Calendar",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="calendar-outline" size={size} color={color} />
           ),
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
