@@ -1,143 +1,169 @@
-import React from "react";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
-  View,
-  Text,
+  Platform,
   StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
-  Image,
+  View,
 } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { Link } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
 
 const Registration = () => {
+  const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
-    <LinearGradient
-      colors={["#3B5B8F", "#FFFFFF"]} 
-      start={{ x: 0, y: 0 }}
-      end={{ x: 0, y: 1 }}
-      style={styles.container}
-    >
-      {/* Logo + Welcome */}
-      <View style={styles.topContent}>
-        <Image
-          source={require("../assets/images/image42.png")}
-          style={styles.logo}
-        />
-        <Text style={styles.LogInHereText}>WELCOME</Text>
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.title}>Sign up</Text>
 
-        {/* Username input */}
-        <View style={styles.InputContainer}>
-          <FontAwesome name="user" size={20} color={"#9A9A9A"} style={styles.icon} />
+        {/* Full Name */}
+        <View style={styles.inputRow}>
+          <MaterialCommunityIcons
+            name="account-outline"
+            size={20}
+            color="#9A9A9A"
+          />
           <TextInput
-            style={styles.input}
-            placeholder="Username, phone or email"
-            keyboardType="email-address"
+            style={styles.textInput}
+            placeholder="Full Name"
+            placeholderTextColor="#9A9A9A"
           />
         </View>
 
-        {/* Password input */}
-        <View style={styles.InputContainer}>
-          <FontAwesome name="lock" size={20} color={"#9A9A9A"} style={styles.icon} />
+        {/* Username */}
+        <View style={[styles.inputRow, { marginTop: 12 }]}>
+          <MaterialCommunityIcons
+            name="account-outline"
+            size={20}
+            color="#9A9A9A"
+          />
           <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={true}
+            style={styles.textInput}
+            placeholder="Username or Phone"
+            placeholderTextColor="#9A9A9A"
           />
         </View>
 
-        {/* Email input */}
-        <View style={styles.InputContainer}>
-          <FontAwesome name="envelope" size={20} color={"#9A9A9A"} style={styles.icon} />
+        {/* Email */}
+        <View style={[styles.inputRow, { marginTop: 12 }]}>
+          <MaterialCommunityIcons
+            name="email-outline"
+            size={20}
+            color="#9A9A9A"
+          />
           <TextInput
-            style={styles.input}
+            style={styles.textInput}
             placeholder="Email"
+            placeholderTextColor="#9A9A9A"
             keyboardType="email-address"
           />
         </View>
 
-        {/* Create account */}
-        <TouchableOpacity style={styles.CreateAccount}>
-          <Text style={styles.CreateAccountText}>Create Account</Text>
-        </TouchableOpacity>
-      </View>
+        {/* Password */}
+        <View style={[styles.inputRow, { marginTop: 12 }]}>
+          <MaterialCommunityIcons
+            name="lock-outline"
+            size={20}
+            color="#9A9A9A"
+          />
+          <TextInput
+            style={[styles.textInput, { flex: 1 }]}
+            placeholder="Password"
+            placeholderTextColor="#9A9A9A"
+            secureTextEntry={!showPassword}
+          />
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <Feather
+              name={showPassword ? "eye" : "eye-off"}
+              size={20}
+              color="#9A9A9A"
+            />
+          </TouchableOpacity>
+        </View>
 
-      {/* Back to Login */}
-      <View style={styles.signContainer}>
-        <Text style={styles.signUpText}>Already have an account?</Text>
-        <Link href="/">
-          <Text style={{ color: "#000", fontWeight: "bold" }}>Go to Login</Text>
-        </Link>
+        {/* Register Button */}
+        <TouchableOpacity style={styles.registerButton}>
+          <Text style={styles.registerText}>Register</Text>
+        </TouchableOpacity>
+
+        {/* Back to Login */}
+        <View style={styles.signUpRow}>
+          <Text style={styles.signUpText}>Already have an Account?</Text>
+          <TouchableOpacity onPress={() => router.push("/")}>
+            <Text style={styles.signUpLink}> Login</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </LinearGradient>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 40,
-  },
-  topContent: {
-    alignItems: "center",
-    width: "100%",
-    marginTop: 40,
-  },
-  logo: {
-    width: 260,
-    height: 200,
-    resizeMode: "contain",
-    marginBottom: 8,
-  },
-  LogInHereText: {
-    color: "#000",
-    fontSize: 36,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  InputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    borderRadius: 25,
-    paddingHorizontal: 20,
-    height: 50,
-    marginTop: 12,
-    width: "85%",
-  },
-  icon: {
-    marginRight: 10,
-  },
-  input: {
-    flex: 1,
-    fontSize: 16,
-    color: "#000",
-  },
-  CreateAccount: {
-    backgroundColor: "#000000",
-    borderRadius: 25,
-    paddingVertical: 12,
-    paddingHorizontal: 80,
-    marginTop: 25,
-    alignItems: "center",
-  },
-  CreateAccountText: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  signContainer: {
-    flexDirection: "row",
+    backgroundColor: "#3B82F6",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 40,
+    paddingHorizontal: 20,
+    paddingTop: Platform.OS === "android" ? 20 : 0,
+  },
+  card: {
+    width: "100%",
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    paddingVertical: 26,
+    paddingHorizontal: 18,
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 22,
+    fontWeight: "700",
+    marginBottom: 18,
+    color: "#0B1220",
+  },
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
+    backgroundColor: "#F5F5F5",
+    borderRadius: 10,
+    paddingHorizontal: 12,
+    height: 48,
+  },
+  textInput: {
+    fontSize: 14,
+    color: "#000",
+    flex: 1,
+    marginLeft: 8,
+  },
+  registerButton: {
+    backgroundColor: "#3B82F6",
+    width: "100%",
+    borderRadius: 10,
+    paddingVertical: 14,
+    alignItems: "center",
+    marginTop: 18,
+  },
+  registerText: {
+    color: "#fff",
+    fontWeight: "700",
+    fontSize: 16,
+  },
+  signUpRow: {
+    flexDirection: "row",
+    marginTop: 16,
   },
   signUpText: {
-    color: "#000",
-    fontSize: 16,
-    marginRight: 5,
+    color: "#6B7280",
+    fontSize: 13,
+  },
+  signUpLink: {
+    color: "#3B82F6",
+    fontSize: 13,
+    fontWeight: "700",
   },
 });
 
